@@ -16,7 +16,14 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('should have a login function defined'), function() {
+    expect(scope.login()).toBeDefined();
+  }
+  it('should login with email and password', function() {
+    scope.user.email = "brian@320ny.com";
+    scope.user.password = "monkey";
+    scope.login();
+
+    expect(scope.current_user).toBeDefined();
   });
 });
