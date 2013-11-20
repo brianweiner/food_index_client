@@ -3,11 +3,17 @@
 		<li class="active"><a href="#">Home</a></li>
 		<li><a href="#">About</a></li>
 		<li><a href="#">Contact</a></li>
-		<li><a href="#" ng-click="show.form = !show.form">Login</a></li>
+		<li><a href="">
+			<span ng-hide="show.form" ng-click="show.form = !show.form">Login</span>
+			<span ng-show="show.form">
+				<input type="email" ng-model="user.email"></input>
+				<input type="password" ng-model="user.password"></input>
+				<input type="submit" ng-click="login()"></input>
+				<span ng-click="show.form = !show.form">Cancel</span>
+			</span>
+		</a></li>
 	</ul>
-	<input type="email" ng-model="user.email"></input>
-	<input type="password" ng-model="user.password"></input>
-	<input type="submit" ng-click="login()"></input>
+
 	<h3 class="text-muted">timeline_client</h3>
 </div>
 
