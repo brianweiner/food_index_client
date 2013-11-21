@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Controller: AuthCtl', function () {
+describe('Controller: LoginCtrl', function () {
 
   // load the controller's module
   beforeEach(module('timelineApp'));
 
-  var AuthCtrl, $httpBackend,
+  var LoginCtrl, $httpBackend,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope, _$httpBackend_) {
     scope = $rootScope.$new();
     $httpBackend = _$httpBackend_;
-    AuthCtrl = $controller('AuthCtrl', {
+    LoginCtrl = $controller('LoginCtrl', {
       $scope: scope
     });
   }));

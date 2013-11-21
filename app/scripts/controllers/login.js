@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('timelineApp')
-  .controller('AuthCtrl', function ($scope, $http) {
+  .controller('LoginCtrl', function ($scope, $http) {
     $scope.user={};
     $scope.show = {};
     $scope.show.form = false;
@@ -15,4 +15,5 @@ angular.module('timelineApp')
         }
       });
     }
+
   });
