@@ -1,7 +1,8 @@
 
 <div class="jumbotron">
 	<h1>Hello!,Hello!!</h1>
-	<p class="lead">Always a pleasure scaffolding your apps.</p>
+	<p ng-hide="user" class="lead">Always a pleasure scaffolding your apps.</p>
+	<p ng-show="user" class="lead">{{user.email}}</p>
 	<p><a class="btn btn-lg btn-success" href="#">Splendid!</a></p>
 </div>
 

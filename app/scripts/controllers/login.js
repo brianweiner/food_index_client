@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('timelineApp')
-  .controller('LoginCtrl', function ($scope, $http) {
+  .controller('LoginCtrl', function ($scope, $location, Auth) {
     $scope.user={};
     $scope.show = {};
     $scope.show.form = false;
@@ -9,10 +9,13 @@ angular.module('timelineApp')
     $scope.user.password = "";
 
     $scope.login = function(){
-      $http.post('/api/v1/users/sign_in.json', {user: $scope.user}).then(function(response){
-        if (response.status === 200){
-          $scope.current_user = response.data.user;
-        }
+      Auth.login(
+        { user: $scope.user },
+        function() {
+            $location.path('/');
+        },
+        function(err) {
+            $rootScope.error = err;
       });
     }
 
