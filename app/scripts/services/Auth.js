@@ -12,6 +12,14 @@ angular.module('timelineApp')
       $cookieStore.put('user', user);
     };
 
+    function setHeader(auth_token){
+      $http.defaults.headers.common["Authorization"]="Token token="+auth_token;
+    }
+
+    function clearHeader(){
+      delete $http.defaults.headers.common["Authorization"];
+    }
+
     return {
       authorize: function(accessLevel, role) {
         if(role === undefined)
@@ -33,6 +41,7 @@ angular.module('timelineApp')
       login: function(user, success, error) {
         $http.post('/api/v1/users/sign_in.json', user).success(function(res){
           res.user.role = userRoles['user'];
+          setHeader(res.user.authentication_token);
           changeUser(res.user);
           success();
         }).error(error);
@@ -43,6 +52,7 @@ angular.module('timelineApp')
             email: '',
             role: userRoles.public
           });
+          clearHeader();
           success();
         }).error(error);
       },
