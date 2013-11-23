@@ -1,5 +1,10 @@
 'use strict';
 
+// Authentication extensively influenced by https://github.com/fnakstad/angular-client-side-auth/tree/ui-router
+
+
+
+
 angular.module('timelineApp', [
   'ngCookies',
   'ngResource',
@@ -31,10 +36,10 @@ angular.module('timelineApp', [
         controller: 'LoginCtrl',
         access: access.anon
       })
-      .state('logout', {
-        url: '/logout',
-        templateUrl: 'views/logout.html',
-        controller: 'LogoutCtrl',
+      .state('projects', {
+        url: '/projects',
+        templateUrl: 'views/projects/index.html',
+        controller: 'ProjectsCtrl',
         access: access.user
       });
     var interceptor = ['$location', '$q', function($location, $q) {
@@ -60,7 +65,7 @@ angular.module('timelineApp', [
 
     $httpProvider.responseInterceptors.push(interceptor);
   })
-    .run(function ($rootScope, $location, $cookieStore, $http, Auth) {
+    .run(function ($rootScope, $location, $cookieStore, $timeout, $http, Auth) {
       var auth_token = $cookieStore.get('user').authentication_token || "";
 
       if (auth_token != ""){
@@ -70,8 +75,16 @@ angular.module('timelineApp', [
       $rootScope.$on("$stateChangeStart", function (event, next, current) {
           $rootScope.error = null;
           if (!Auth.authorize(next.access)) {
-              if(Auth.isLoggedIn()) $location.path('/');
-              else                  $location.path('/login');
+              if(Auth.isLoggedIn()){
+                $timeout(function(){
+                  $location.path('/');
+                });
+              }
+              else{
+                $timeout(function(){
+                  $location.path('/login');
+                });
+              }
           }
       });
 
