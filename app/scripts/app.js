@@ -61,7 +61,11 @@ angular.module('timelineApp', [
     $httpProvider.responseInterceptors.push(interceptor);
   })
     .run(function ($rootScope, $location, $cookieStore, $http, Auth) {
-      var auth_token = $cookieStore.get('user').authentication_token || "";
+      var user = $cookieStore.get('user');
+      var auth_token = "";
+      if (user) {
+        auth_token = user.authentication_token || "";
+      }
 
       if (auth_token != ""){
         $http.defaults.headers.common["Authorization"]="Token token="+auth_token;
