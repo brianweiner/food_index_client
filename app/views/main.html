@@ -1,25 +1,8 @@
-<div class="header">
-	<ul class="nav nav-pills pull-right">
-		<li class="active"><a href="#">Home</a></li>
-		<li><a href="#">About</a></li>
-		<li><a href="#">Contact</a></li>
-		<li><a href="">
-			<span ng-hide="show.form" ng-click="show.form = !show.form">Login</span>
-			<span ng-show="show.form">
-				<input type="email" ng-model="user.email"></input>
-				<input type="password" ng-model="user.password"></input>
-				<input type="submit" ng-click="login()"></input>
-				<span ng-click="show.form = !show.form">Cancel</span>
-			</span>
-		</a></li>
-	</ul>
-
-	<h3 class="text-muted">timeline_client</h3>
-</div>
 
 <div class="jumbotron">
-	<h1>Shalom!,Shalom!!</h1>
-	<p class="lead">Always a pleasure scaffolding your apps.</p>
+	<h1>Hello!,Hello!!</h1>
+	<p ng-hide="user" class="lead">Always a pleasure scaffolding your apps.</p>
+	<p ng-show="user" class="lead">{{user.email}}</p>
 	<p><a class="btn btn-lg btn-success" href="#">Splendid!</a></p>
 </div>
 
