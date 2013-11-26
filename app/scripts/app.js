@@ -74,7 +74,7 @@ angular.module('timelineApp', [
       }
 
       if (auth_token != ""){
-        $http.defaults.headers.common["Authorization"]="Token token="+auth_token;
+        $http.defaults.headers.common["Authorization"]='Token token="'+auth_token+'", email="'+user.email+'"';
       }
 
       $rootScope.$on("$stateChangeStart", function (event, next, current) {

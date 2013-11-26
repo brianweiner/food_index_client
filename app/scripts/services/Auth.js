@@ -12,8 +12,8 @@ angular.module('timelineApp')
       $cookieStore.put('user', user);
     };
 
-    function setHeader(auth_token){
-      $http.defaults.headers.common["Authorization"]="Token token="+auth_token;
+    function setHeader(auth_token, email){
+      $http.defaults.headers.common["Authorization"]='Token token="'+auth_token+'", email="'+email+'"';
     }
 
     function clearHeader(){
@@ -41,7 +41,7 @@ angular.module('timelineApp')
       login: function(user, success, error) {
         $http.post('/api/v1/users/sign_in.json', user).success(function(res){
           res.user.role = userRoles['user'];
-          setHeader(res.user.authentication_token);
+          setHeader(res.user.authentication_token, res.user.email);
           changeUser(res.user);
           success();
         }).error(error);
