@@ -11,8 +11,6 @@ module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
   require('time-grunt')(grunt);
 
-  grunt.loadNpmTasks('grunt-connect-proxy');
-
 
   grunt.initConfig({
     yeoman: {
@@ -61,22 +59,24 @@ module.exports = function (grunt) {
       }
     },
     connect: {
-      options: {
-        port: 9000,
-        // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
-        livereload: 35729
+      server: {
+        options: {
+          port: 9000,
+          // Change this to '0.0.0.0' to access the server from outside.
+          hostname: 'localhost',
+          livereload: 35729
+        },
+        proxies: [
+          {
+            context: '/api',
+            host: 'localhost',
+            port: 3000,
+            https: false,
+            changeOrigin: false,
+            xforward: false
+          }
+        ]
       },
-      proxies: [
-        {
-          context: '/api',
-          host: 'localhost',
-          port: 3000,
-          https: false,
-          changeOrigin: false,
-          xforward: false
-        }
-      ],
       livereload: {
         options: {
           middleware: function (connect, options) {
@@ -365,7 +365,7 @@ module.exports = function (grunt) {
       'clean:server',
       'concurrent:server',
       'autoprefixer',
-      'configureProxies',
+      'configureProxies:server',
       'connect:livereload',
       'watch'
     ]);
