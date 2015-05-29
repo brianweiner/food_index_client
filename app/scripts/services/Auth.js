@@ -32,14 +32,14 @@ angular.module('timelineApp')
         return user.role.title == userRoles.user.title || user.role.title == userRoles.admin.title;
       },
       register: function(user, success, error) {
-        $http.post('/api/v1/users.json', user).success(function(res) {
+        $http.post('/api/v1/users', user).success(function(res) {
           res.user.role = userRoles['user'];
           changeUser(res.user);
           success();
         }).error(error);
       },
       login: function(user, success, error) {
-        $http.post('/api/v1/users/sign_in.json', user).success(function(res){
+        $http.post('/api/v1/users/sign_in', user).success(function(res){
           res.user.role = userRoles['user'];
           setHeader(res.user.authentication_token, res.user.email);
           changeUser(res.user);
@@ -47,7 +47,7 @@ angular.module('timelineApp')
         }).error(error);
       },
       logout: function(success, error) {
-        $http.delete('/api/v1/users/sign_out.json', {'user': {'email':currentUser.email}}).success(function(){
+        $http.delete('/api/v1/users/sign_out', {'user': {'email':currentUser.email}}).success(function(){
           changeUser({
             email: '',
             role: userRoles.public

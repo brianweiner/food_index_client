@@ -36,10 +36,10 @@ angular.module('timelineApp', [
         controller: 'LoginCtrl',
         access: access.anon
       })
-      .state('projects', {
-        url: '/projects',
-        templateUrl: 'views/projects/index.html',
-        controller: 'ProjectsCtrl',
+      .state('recipes', {
+        url: '/recipes',
+        templateUrl: 'views/recipes/index.html',
+        controller: 'RecipesCtrl',
         access: access.user
       });
     var interceptor = ['$location', '$q', function($location, $q) {
@@ -63,7 +63,13 @@ angular.module('timelineApp', [
       }
     }];
 
-    $httpProvider.responseInterceptors.push(interceptor);
+    $httpProvider.interceptors.push(interceptor);
+
+    $httpProvider.defaults.useXDomain = true;
+    // $httpProvider.defaults.withCredentials = true;
+    delete $httpProvider.defaults.headers.common["X-Requested-With"];
+    $httpProvider.defaults.headers.common["Accept"] = "application/json";
+    $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
   })
 
     .run(function ($rootScope, $location, $cookieStore, $timeout, $http, Auth) {

@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: ProjectsCtrl', function () {
+describe('Controller: RecipesCtrl', function () {
 
   // load the controller's module
   beforeEach(module('timelineApp'));
@@ -11,7 +11,7 @@ describe('Controller: ProjectsCtrl', function () {
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    ProjectsCtrl = $controller('ProjectsCtrl', {
+    ProjectsCtrl = $controller('RecipesCtrl', {
       $scope: scope
     });
   }));
