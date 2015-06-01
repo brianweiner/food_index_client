@@ -36,10 +36,22 @@ angular.module('timelineApp', [
         controller: 'LoginCtrl',
         access: access.anon
       })
+      .state('create_recipe', {
+        url: '/recipe/new',
+        templateUrl: 'views/recipes/new.html',
+        controller: 'RecipeCreateCtrl',
+        access: access.user
+      })
       .state('recipes', {
         url: '/recipes',
         templateUrl: 'views/recipes/index.html',
         controller: 'RecipesCtrl',
+        access: access.user
+      })
+      .state('recipes.show', {
+        url: '/:recipeId',
+        templateUrl: 'views/recipes/show.html',
+        controller: 'RecipeCtrl',
         access: access.user
       });
     var interceptor = ['$location', '$q', function($location, $q) {

@@ -1,5 +1,8 @@
 <div class="row">
+  <div class="col-md-12"><h2>Browse Recipes</h2></div>
+  <a ui-sref="create_recipe">Create a recipe</a>
   <div class="col-md-12" ng-repeat="recipe in recipes">
-    <div ng-bind="recipe.name"></div>
+    <div><a ui-sref="recipes.show({recipeId:recipe.id})"><span ng-bind="recipe.name"></span></div>
   </div>
+  <div ui-view></div>
 </div>

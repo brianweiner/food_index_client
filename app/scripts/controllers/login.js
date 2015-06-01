@@ -15,7 +15,7 @@ angular.module('timelineApp')
             $location.path('/');
         },
         function(err) {
-            $rootScope.error = err;
+            $scope.error = err;
       });
     }
 

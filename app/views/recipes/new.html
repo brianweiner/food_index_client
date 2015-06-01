@@ -1,0 +1,12 @@
+<form name="recipe_step_one" ng-submit="create_recipe_step_one()">
+  <div class="form-group">
+    <label for="recipe[name]">Recipe Name</label>
+    <input type="text" class="form-control" id="recipe_name" placeholder="Enter recipe name" ng-model="recipe.name" ng-required>
+  </div>
+  <div class="form-group">
+    <label for="recipe[description]">Description</label>
+    <input type="text" class="form-control" id="recipe_description" placeholder="Describe your new recipe" ng-model="recipe.description" ng-required>
+  </div>
+
+  <button type="submit" class="btn btn-default" >Get started!</button>
+</form>

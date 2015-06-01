@@ -21,12 +21,12 @@ describe('Controller: LoginCtrl', function () {
     expect(scope.login()).toBeDefined();
   }
   it('should login with email and password', function() {
-    $httpBackend.when('POST', '/api/v1/users/sign_in.json').respond({user:{id: 1, email: 'brian@320ny.com', authentication_token: '439jaasdj'}});
+    $httpBackend.when('POST', '/api/v1/users/sign_in').respond({user:{id: 1, email: 'brian@320ny.com', authentication_token: '439jaasdj'}});
     scope.user.email = "brian@320ny.com";
     scope.user.password = "monkey";
     scope.login();
     $httpBackend.flush();
 
-    expect(scope.current_user).toBeDefined();
+    expect(scope.user).toBeDefined();
   });
 });

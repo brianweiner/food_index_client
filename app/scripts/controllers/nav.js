@@ -12,7 +12,7 @@ angular.module('timelineApp')
             //$location.path('/');
         },
         function(err) {
-            $rootScope.error = err;
+          $location.path('/');
       });
     }
   });

@@ -12,9 +12,10 @@ describe('Directive: accessLevel', function () {
     scope = $rootScope.$new();
   }));
 
-  it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<access-level></access-level>');
+  it('should show public elements to anon users', inject(function ($compile) {
+    element = angular.element("<div class='some-class' access-level='{title: '*', bitMask: '7'}'></div>");
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the accessLevel directive');
+
+    expect(element).toBe('block');
   }));
 });

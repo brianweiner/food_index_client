@@ -2,6 +2,10 @@
 
 angular.module('timelineApp').factory('Recipe', function($resource) {
   return $resource('/api/v1/recipes/:id', {id: "@id" },
-    {'query': {method: 'GET', isArray: false }}
-  ); // Note the full endpoint address
+    { 'get':    {method:'GET'},
+      'create': {method:'POST'},
+      'save':   {method:'PATCH'},
+      'query':  {method:'GET', isArray:false},
+      'delete': {method:'DELETE'} }
+  );
 });

@@ -54,7 +54,15 @@ angular.module('timelineApp')
           });
           clearHeader();
           success();
-        }).error(error);
+        }).error(function(){
+          changeUser({
+            email: '',
+            role: userRoles.public
+          });
+          clearHeader();
+          console.log('server responded with error');
+          error();
+        });
       },
       accessLevels: accessLevels,
       userRoles: userRoles,
