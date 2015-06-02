@@ -1,0 +1,20 @@
+<span class="ingredient-input-fields">
+  <div class="form-group">
+    <label for="ingredient[name]">Ingredient Name</label>
+    <angucomplete-alt id="ingredient_names"
+            placeholder="Search ingredients"
+            pause="400"
+            selected-object="add_food_element"
+            remote-url="/api/v1/food_element_autocomplete?term="
+            title-field="label"
+            input-class="form-control form-control-small"
+            auto-match='true'
+            />
+  </div>
+  <div class="form-group">
+    <label for="recipe[quantity]">Quantity</label>
+    <input type="number" class="form-control" id="ingredient_quantity" placeholder="How much is needed? e.g '2' for 2 cups" ng-model="ingredient.amount" ng-required>
+    <label for="recipe[unit]">Unit</label>
+    <input type="string" class="form-control" id="ingredient_unit" placeholder="What unit is the measurement? e.g Cups, grams, etc" ng-model = "ingredient.unit" ng-required>
+  </div>
+</span>

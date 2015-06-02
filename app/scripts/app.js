@@ -9,7 +9,8 @@ angular.module('timelineApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ui.router'
+  'ui.router',
+  'angucomplete-alt'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     var access = routingConfig.accessLevels;
@@ -40,6 +41,12 @@ angular.module('timelineApp', [
         url: '/recipe/new',
         templateUrl: 'views/recipes/new.html',
         controller: 'RecipeCreateCtrl',
+        access: access.user
+      })
+      .state('edit_recipe', {
+        url: '/recipe/:recipeId/edit',
+        templateUrl: 'views/recipes/edit.html',
+        controller: 'RecipeEditCtrl',
         access: access.user
       })
       .state('recipes', {

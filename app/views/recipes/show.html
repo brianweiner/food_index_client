@@ -1,3 +1,14 @@
-{{ recipe.name }}
+<div class="row">
+  <div class="col-md-3">
+    <h3 ng-bind = "recipe.name"></h3>
+    <p ng-bind="recipe.description"></p>
+  </div>
+  <div class="col-mid-5">
+    <h4>Ingredients</h4>
+    <recipe-ingredient-list ingredients="recipe.recipe_ingredients" ></recipe-ingredient-list>
+    <h4>Steps</h4>
+    <recipe-step-list steps="recipe.recipe_steps"></recipe-step-list>
+  </div>
 
-{{ recipe.description }}
+  <a ui-sref="edit_recipe({recipeId:recipe.id})">Edit</a>
+</div>

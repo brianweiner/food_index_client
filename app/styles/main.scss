@@ -2,6 +2,14 @@ $icon-font-path: "/bower_components/bootstrap-sass/vendor/assets/fonts/";
 
 @import 'bootstrap-sass/vendor/assets/stylesheets/bootstrap';
 
+ul.ingredient-list {
+    list-style-type: none;
+}
+
+li > span.ingredient-list-item {
+    
+}
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
