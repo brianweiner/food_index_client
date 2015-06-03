@@ -1,37 +1,38 @@
 <div class="row" ng-init="load_user_and_recipe()">
-  <div class="col-md-12"><h2>Editing {{recipe.name}}</h2></div>
-  <button class="btn btn-small" ng-click="edit_title_and_description()" ng-hide="show.edit_title_or_description">Edit title or description</button>
+  <div class="col-md-12"><h2>Editing {{recipe.name}}</h2>  
+    <button class="btn btn-small" ng-click="enable('edit_title_or_description')" ng-hide="show.edit_title_or_description">Edit title or description</button>
+  </div>
   <form name="edit_recipe" ng-submit="update_recipe()" ng-show="show.edit_title_or_description">
-    <recipe-input-fields recipe="recipe"></recipe-input-fields>
+    <recipe-input-fields recipe="local_recipe"></recipe-input-fields>
 
     <button type="submit" class="btn btn-default" >Update recipe</button>
-    <button ng-click="cancel('edit_title_or_description')" class="btn btn-default" >Cancel</button>
+    <button type="button" ng-click="cancel('edit_title_or_description')" class="btn btn-default" >Cancel</button>
 
   </form>
   <div class="col-md-12">
     <h4>Current Ingredients</h4>
     <recipe-ingredient-list ingredients="recipe.recipe_ingredients"></recipe-ingredient-list>
-    <button class="btn btn-small" ng-click="add_ingredient()" ng-hide="show.add_ingredient">Add ingredient</button>
+    <button class="btn btn-small" ng-click="enable('add_ingredient');" ng-hide="show.add_ingredient">Add ingredient</button>
 
     <h4 ng-show="show.add_ingredient">New Ingredient</h4>
     <form name="recipe_add_ingredients" ng-submit="submit_recipe_ingredient()" ng-show="show.add_ingredient">
       <recipe-ingredient-input-fields ingredient="ingredient"></recipe-ingredient-input-fields>
 
       <button type="submit" class="btn btn-default" >Add ingredient</button>
-      <button ng-click="cancel('add_ingredient')" class="btn btn-default" >Cancel</button>
+      <button type="button" ng-click="cancel('add_ingredient')" class="btn btn-default" >Cancel</button>
     </form>
   </div>
   <div class="col-md-12">
     <h4>Current Steps</h4>
     <recipe-step-list steps="recipe.recipe_steps"></recipe-step-list>
-    <button class="btn btn-small" ng-click="add_step()" ng-hide="show.add_step">Add step</button>
+    <button class="btn btn-small" ng-click="enable('add_step')" ng-hide="show.add_step">Add step</button>
 
     <h4 ng-show="show.add_step">New Step</h4>
     <form name="recipe_add_step" ng-submit="submit_recipe_step()" ng-show="show.add_step">
       <recipe-step-input-fields step="step"></recipe-step-input-fields>
 
       <button type="submit" class="btn btn-default" >Add step</button>
-      <button ng-click="cancel('add_step')" class="btn btn-default" >Cancel</button>
+      <button type="button" ng-click="cancel('add_step')" class="btn btn-default" >Cancel</button>
     </form>
   </div>
 </div>
