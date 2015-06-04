@@ -9,6 +9,6 @@ angular.module('timelineApp').directive('recipeIngredientList', [function() {
     scope: {
       ingredients : '=ingredients'
     }
-  }
+  };
 
 }]);

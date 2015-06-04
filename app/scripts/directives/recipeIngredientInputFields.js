@@ -10,15 +10,15 @@ angular.module('timelineApp').directive('recipeIngredientInputFields', [function
       ingredient : '=ingredient'
     },
     controller: function($scope){
-      $scope.add_food_element = function(element){
-        if(element != undefined){
-          $scope.ingredient.food_element_id = element.originalObject.id
+      $scope.addFoodElement = function(element){
+        if(element !== undefined){
+          $scope.ingredient.foodElementId = element.originalObject.id;
         }
         else{
-          $scope.ingredient.food_element_id = '';
-        } 
-      }
+          $scope.ingredient.foodElementId = '';
+        }
+      };
     }
-  }
+  };
 
 }]);

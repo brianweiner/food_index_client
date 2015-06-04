@@ -84,11 +84,11 @@ module.exports = function (grunt) {
             var middlewares = [];
             var directory = options.directory || options.base[options.base.length - 1];
             if (!Array.isArray(options.base)) {
-                options.base = [options.base];
+              options.base = [options.base];
             }
             options.base.forEach(function(base) {
-                // Serve static files.
-                middlewares.push(connect.static(base));
+              // Serve static files.
+              middlewares.push(connect.static(base));
             });
 
             // Setup the proxy
@@ -269,7 +269,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>',
-          src: ['*.html', 'views/*.html', 'views/*/*.html'],
+          src: ['*.html', 'views/*.html', 'views/recipes/*.html'],
           dest: '<%= yeoman.dist %>'
         }]
       }
@@ -383,7 +383,12 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'useminPrepare',
-    'concurrent:dist',
+    //'concurrent:dist',
+    'coffee',
+    'compass:dist',
+    'copy:styles',
+    'imagemin',
+    'svgmin',
     'autoprefixer',
     'concat',
     'ngmin',

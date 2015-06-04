@@ -9,6 +9,6 @@ angular.module('timelineApp').directive('recipeStepInputFields', [function() {
     scope: {
       step : '=step'
     }
-  }
+  };
 
 }]);

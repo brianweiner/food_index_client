@@ -10,6 +10,6 @@ angular.module('timelineApp').directive('recipeStepList', [function() {
       steps : '=steps',
       editable: '@'
     }
-  }
+  };
 
 }]);

@@ -1,7 +1,6 @@
 <ol class="step-list">
   <li ng-repeat="step in steps">
-    <span class="step-list-item">
-      {{step.description}}
+    <span class="step-list-item" ng-bind="step.description">
     </span>
   </li>
 </ol>

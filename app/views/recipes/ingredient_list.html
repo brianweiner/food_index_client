@@ -1,7 +1,9 @@
 <ul class="ingredient-list">
   <li ng-repeat="ingredient in ingredients">
     <span class="ingredient-list-item">
-      {{ingredient.name}} - {{ingredient.amount }} {{ ingredient.unit }}
+      <span ng-bind="ingredient.name"></span>
+      <span ng-bind="ingredient.amount"></span>
+      <span ng-bind="ingredient.unit"></span>
     </span>
   </li>
 </ul>

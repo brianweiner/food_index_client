@@ -5,18 +5,18 @@ angular.module('timelineApp')
     $scope.user={};
     $scope.show = {};
     $scope.show.form = false;
-    $scope.user.email = "";
-    $scope.user.password = "";
+    $scope.user.email = '';
+    $scope.user.password = '';
 
     $scope.login = function(){
-      Auth.login(
-        { user: $scope.user },
+      Auth.login({ user: $scope.user },
         function() {
-            $location.path('/');
+          $location.path('/');
         },
         function(err) {
-            $scope.error = err;
-      });
-    }
+          $scope.error = err;
+        }
+      );
+    };
 
   });

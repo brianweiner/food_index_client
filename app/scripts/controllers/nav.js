@@ -10,8 +10,9 @@ angular.module('timelineApp')
         function() {
           $location.path('/');
         },
-        function(err) {
+        function() {
           $location.path('/');
-      });
-    }
+        }
+      );
+    };
   });

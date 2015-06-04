@@ -4,19 +4,19 @@ angular.module('timelineApp')
   .controller('RegisterCtrl', function ($scope, $location, Auth) {
     $scope.user={};
     $scope.show = {};
-    $scope.user.email = "";
-    $scope.user.password = "";
+    $scope.user.email = '';
+    $scope.user.password = '';
     $scope.role = Auth.userRoles.user;
     $scope.userRoles = Auth.userRoles;
 
     $scope.signup = function(){
-      Auth.register(
-        { user: $scope.user },
+      Auth.register({ user: $scope.user },
         function() {
-            $location.path('/');
+          $location.path('/');
         },
         function(err) {
-            $rootScope.error = err;
-      });
-    }
+          $scope.error = err;
+        }
+      );
+    };
   });

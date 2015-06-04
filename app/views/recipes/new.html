@@ -1,17 +1,8 @@
-<div class="row" ng-init="load_user_and_assign_id()" ng-switch="current_step">
-  <form name="recipe_step_one" ng-submit="create_recipe_step_one()" ng-switch-when="1">
+<div class="row" ng-init="loadUserAndAssignId()">
+  <form name="recipe_step_one" ng-submit="createRecipe()">
     <recipe-input-fields recipe="recipe"></recipe-input-fields>
 
     <button type="submit" class="btn btn-default" >Get started!</button>
   </form>
-  <div ng-switch-when="2">
-    <h4>{{recipe.name}}</h4>
-    <p>{{recipe.description}}</h4>
-    <ul>
-      <li ng-repeat="ingredient in main_ingredients">
-        {{ ingredient.name }}
-      </li>
-    </ul>
-  </div>
   
 </div>
