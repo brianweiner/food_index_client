@@ -8,8 +8,7 @@ angular.module('timelineApp')
     $scope.logout = function(){
       Auth.logout(
         function() {
-          //maybe a flash message
-            //$location.path('/');
+          $location.path('/');
         },
         function(err) {
           $location.path('/');

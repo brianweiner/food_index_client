@@ -49,6 +49,12 @@ angular.module('timelineApp', [
         controller: 'RecipeEditCtrl',
         access: access.user
       })
+      .state('recipe', {
+        url: '/recipe/:recipeId',
+        templateUrl: 'views/recipes/show.html',
+        controller: 'RecipeCtrl',
+        access: access.user
+      })
       .state('recipes', {
         url: '/recipes',
         templateUrl: 'views/recipes/index.html',

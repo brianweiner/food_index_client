@@ -7,7 +7,8 @@ angular.module('timelineApp').directive('recipeStepList', [function() {
     replace: true,
     templateUrl: 'views/recipes/step_list.html',
     scope: {
-      steps : '=steps'
+      steps : '=steps',
+      editable: '@'
     }
   }
 

@@ -1,18 +1,25 @@
 <div class="row" ng-init="load_user_and_recipe()">
-  <div class="col-md-12"><h2>Editing {{recipe.name}}</h2>  
+  <div class="col-md-12"><h2>Editing '{{recipe.name}}'</h2>  
+    <p class="text-muted" ng-bind="recipe.description"></p>
     <button class="btn btn-small" ng-click="enable('edit_title_or_description')" ng-hide="show.edit_title_or_description">Edit title or description</button>
+    <form name="edit_recipe" ng-submit="update_recipe()" ng-show="show.edit_title_or_description">
+      <recipe-input-fields recipe="local_recipe"></recipe-input-fields>
+
+      <button type="submit" class="btn btn-default" >Update recipe</button>
+      <button type="button" ng-click="cancel('edit_title_or_description')" class="btn btn-default" >Cancel</button>
+    </form>
   </div>
-  <form name="edit_recipe" ng-submit="update_recipe()" ng-show="show.edit_title_or_description">
-    <recipe-input-fields recipe="local_recipe"></recipe-input-fields>
 
-    <button type="submit" class="btn btn-default" >Update recipe</button>
-    <button type="button" ng-click="cancel('edit_title_or_description')" class="btn btn-default" >Cancel</button>
-
-  </form>
   <div class="col-md-12">
-    <h4>Current Ingredients</h4>
-    <recipe-ingredient-list ingredients="recipe.recipe_ingredients"></recipe-ingredient-list>
-    <button class="btn btn-small" ng-click="enable('add_ingredient');" ng-hide="show.add_ingredient">Add ingredient</button>
+    <hr />
+    <div ng-if="recipe.recipe_ingredients.length == 0">
+      <h4>Pick your main ingredient</h4>
+      <angucomplete-alt id="main_ingredient_names" placeholder="Search ingredients" pause="100" selected-object="set_ingredient" local-data="main_ingredients" search-fields="name" title-field="name" input-class="form-control form-control-small", autocomplete="true">
+    </div>
+    <div ng-if="recipe.recipe_ingredients.length > 0">
+      <h4>Current Ingredients</h4>
+      <recipe-ingredient-list ingredients="recipe.recipe_ingredients"></recipe-ingredient-list>
+    </div>
 
     <h4 ng-show="show.add_ingredient">New Ingredient</h4>
     <form name="recipe_add_ingredients" ng-submit="submit_recipe_ingredient()" ng-show="show.add_ingredient">
@@ -21,8 +28,20 @@
       <button type="submit" class="btn btn-default" >Add ingredient</button>
       <button type="button" ng-click="cancel('add_ingredient')" class="btn btn-default" >Cancel</button>
     </form>
+    <hr />
+    <h4>Suggested ingredients for {{recipe.recipe_ingredients[0].name}}</h4>
+    <p class="text-muted">Click an ingredient name to add it to the list</p>
+    
+    <span class="col-md-2" ng-repeat="connection in ingredient_connections | filter:filterAlreadyAdded ">
+      <span id="food-element-{{connection.food_element_id}}" ng-class="[connection.food_element_type, connection.connection_type]" ng-bind="connection.name" ng-click="set_ingredient(connection)"></span>
+    </span>
+    <div class="col-md-12">
+      <button class="btn btn-small" ng-click="enable('add_ingredient');" ng-hide="show.add_ingredient">Add ingredient not listed</button>
+    </div>
   </div>
+  <hr />
   <div class="col-md-12">
+    <hr />
     <h4>Current Steps</h4>
     <recipe-step-list steps="recipe.recipe_steps"></recipe-step-list>
     <button class="btn btn-small" ng-click="enable('add_step')" ng-hide="show.add_step">Add step</button>
@@ -34,5 +53,9 @@
       <button type="submit" class="btn btn-default" >Add step</button>
       <button type="button" ng-click="cancel('add_step')" class="btn btn-default" >Cancel</button>
     </form>
+  </div>
+  <div class="col-md-12">
+    <hr />
+    <button type="button" class="btn btn-warning" ng-click="delete_recipe()">Delete Recipe</button>
   </div>
 </div>

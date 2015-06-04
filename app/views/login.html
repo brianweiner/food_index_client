@@ -1,4 +1,12 @@
-<p>This is the login view.</p>
-<input type="email" ng-model="user.email"></input>
-<input type="password" ng-model="user.password"></input>
-<input type="submit" ng-click="login()"></input>
+<h3>Welcome back!</h3>
+<form ng-submit = "login()">
+  <div class="form-group">
+    <label for="user[email]">Email address</label>
+    <input type="email" class="form-control" id="user_email" ng-model="user.email" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label for="user[password]">Password</label>
+    <input type="password" class="form-control" id="user_password" ng-model="user.password" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-default">Login</button>
+</form>

@@ -9,7 +9,6 @@ angular.module('timelineApp').factory('Recipe', function($resource) {
       'delete': {method:'DELETE'},
       'add_recipe_ingredient': {method: 'POST', url: '/api/v1/recipes/:id/add_recipe_ingredient' },
       'add_recipe_step': {method: 'POST', url: '/api/v1/recipes/:id/add_recipe_step' } 
-
     }
   );
 });
