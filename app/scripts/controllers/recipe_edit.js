@@ -52,11 +52,20 @@ angular.module('timelineApp')
     };
 
     $scope.submitRecipeIngredient = function(){
-      Recipe.addRecipeIngredient({recipeIngredient: $scope.ingredient, id: $scope.recipe.id}, function(data){
-        $scope.recipe.recipeIngredients = $scope.recipe.recipeIngredients.concat(data);
-        $scope.ingredient = {};
-        $scope.cancel('add_ingredient');
-        $scope.queryForConnections();
+      Recipe.addRecipeIngredient(
+        {
+          recipeIngredient: {
+            food_element_id: $scope.ingredient.foodElementId,
+            unit: $scope.ingredient.unit,
+            amount: $scope.ingredient.amount 
+          },
+          id: $scope.recipe.id
+        },
+        function(data){
+          $scope.recipe.recipeIngredients = $scope.recipe.recipeIngredients.concat(data);
+          $scope.ingredient = {};
+          $scope.cancel('add_ingredient');
+          $scope.queryForConnections();
       });
     };
 

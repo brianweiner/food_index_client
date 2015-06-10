@@ -269,7 +269,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>',
-          src: ['*.html', 'views/*.html', 'views/recipes/*.html'],
+          src: ['*.html', 'views/*.html'],
           dest: '<%= yeoman.dist %>'
         }]
       }
@@ -389,6 +389,7 @@ module.exports = function (grunt) {
     'copy:styles',
     'imagemin',
     'svgmin',
+    'htmlmin',
     'autoprefixer',
     'concat',
     'ngmin',

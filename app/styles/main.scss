@@ -10,6 +10,49 @@ li > span.ingredient-list-item {
     
 }
 
+.edit-page {
+    .ingredient-connection {
+        .ideal p {
+            text-transform: uppercase;
+        }
+
+        p.bold {
+            font-weight: bold;
+        }
+
+        .vegetable p{
+            background-color: LightGreen;
+        }
+
+        .spice p{
+            background-color: BurlyWood;
+        }
+
+        .herb p{
+            background-color: MediumSeaGreen;
+        }
+        .fruit p{
+            background-color: LightSalmon;
+        }
+        .aromatic p{
+            background-color: LightPink;
+        }
+        .nut p,
+        .legume p{
+            background-color: SandyBrown;
+        }
+        .grain p,
+        .starch p{
+            background-color: Wheat;
+        }
+        .dairy p{
+            background-color: SeaShell;
+        }
+
+    }
+
+}
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;

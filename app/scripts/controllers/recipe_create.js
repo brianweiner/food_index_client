@@ -11,7 +11,13 @@ angular.module('timelineApp')
     };
 
     $scope.createRecipe = function(){
-      Recipe.create({recipe: $scope.recipe}, function(data){
+      var recipe = $scope.recipe;
+      Recipe.create({recipe: {
+                       name: recipe.name,
+                       description: recipe.description,
+                       user_id: recipe.userId
+                      }
+                    }, function(data){
         // create blank ingredient with recipe_id
         $location.path('/recipe/'+data.recipe.id+'/edit');
       });

@@ -1,4 +1,4 @@
-<div class="row" ng-init="loadUserAndRecipe()">
+<div class="row edit-page" ng-init="loadUserAndRecipe()" >
   <div class="col-md-12"><h2>Editing '<span ng-bind="recipe.name"></span>'</h2>  
     <p class="text-muted" ng-bind="recipe.description"></p>
     <button class="btn btn-small" ng-click="enable('edit_title_or_description')" ng-hide="show.edit_title_or_description">Edit title or description</button>
@@ -18,9 +18,8 @@
     </div>
     <div ng-if="recipe.recipeIngredients.length > 0">
       <h4>Current Ingredients</h4>
-      <recipe-ingredient-list ingredients="recipe.recipe_ingredients"></recipe-ingredient-list>
+      <recipe-ingredient-list ingredients="recipe.recipeIngredients"></recipe-ingredient-list>
     </div>
-
     <h4 ng-show="show.add_ingredient">New Ingredient</h4>
     <form name="recipe_add_ingredients" ng-submit="submitRecipeIngredient()" ng-show="show.add_ingredient">
       <recipe-ingredient-input-fields ingredient="ingredient"></recipe-ingredient-input-fields>
@@ -29,11 +28,13 @@
       <button type="button" ng-click="cancel('add_ingredient')" class="btn btn-default" >Cancel</button>
     </form>
     <hr />
-    <h4>Suggested ingredients for <span ng-bind="recipe.recipe_ingredients[0].name"></span></h4>
+    <h4>Suggested ingredients for <span ng-bind="recipe.recipeIngredients[0].name"></span></h4>
     <p class="text-muted">Click an ingredient name to add it to the list</p>
     
-    <span class="col-md-2" ng-repeat="connection in ingredientConnections | filter:filterAlreadyAdded ">
-      <span id="food-element-{{connection.foodElementId}}" ng-class="[connection.foodElementType, connection.connectionType]" ng-bind="connection.name" ng-click="setIngredient(connection)"></span>
+    <span class="col-md-3 ingredient-connection" ng-repeat="connection in ingredientConnections | filter:filterAlreadyAdded ">
+      <span id="food-element-{{connection.foodElementId}}" ng-class="[connection.foodElementType, connection.connectionType]" ng-click="setIngredient(connection)">
+        <p ng-class="{ 'bold': connection.connectionType == 'ideal' || connection.connectionType == 'strong' }" ng-bind="connection.name"></p>
+      </span>
     </span>
     <div class="col-md-12">
       <button class="btn btn-small" ng-click="enable('add_ingredient');" ng-hide="show.add_ingredient">Add ingredient not listed</button>
