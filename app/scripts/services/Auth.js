@@ -36,6 +36,7 @@ angular.module('timelineApp')
       register: function(user, success, error) {
         $http.post('/api/v1/users', user).success(function(res) {
           res.user.role = userRoles.user;
+          setHeader(res.user.authenticationToken, res.user.email);
           changeUser(res.user);
           success();
         }).error(error);

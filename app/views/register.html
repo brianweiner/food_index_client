@@ -1,12 +1,16 @@
 
 <form ng-submit = "signup()">
-  <div class="form-group">
-    <label for="user[email]">Email address</label>
-    <input type="email" class="form-control" id="user_email" ng-model="user.email" placeholder="Enter email">
+  <div class="email_input" ng-class="{'has-error' : show.email_error}" >
+    <div class="form-group">
+      <label for="user[email]">Email address<span class="error" ng-show="show.email_error"> {{show.email_error}}</span></label>
+      <input type="email" class="form-control" id="user_email" ng-model="user.email" placeholder="Enter email">
+    </div>
   </div>
-  <div class="form-group">
-    <label for="user[password]">Password</label>
-    <input type="password" class="form-control" id="user_password" ng-model="user.password" placeholder="Password">
+  <div class="password_input" ng-class="{'has-error' : show.password_error}">
+    <div class="form-group">
+      <label for="user[password]">Password<span class="error" ng-show="show.password_error"> {{show.password_error}}</span></label>
+      <input type="password" class="form-control" id="user_password" ng-model="user.password" placeholder="Password">
+    </div>
   </div>
   <button type="submit" class="btn btn-default">Create Account</button>
 </form>
